@@ -1,0 +1,37 @@
+let matrizA = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+let matrizB = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+];
+
+function girarMatriz(matriz) {
+    const longitud = matriz.length;
+    const matrizTransformada = Array.from({ length: longitud }, () => Array(longitud).fill(0));
+
+    for (let x = 0; x < longitud; x++) {
+        for (let y = 0; y < longitud; y++) {
+            matrizTransformada[y][longitud - x - 1] = matriz[x][y];
+        }
+    }
+    return matrizTransformada;
+}
+
+const resultadoA = girarMatriz(matrizA);
+const resultadoB = girarMatriz(matrizB);
+
+console.log("Matriz A original:");
+console.table(matrizA);
+console.log("Matriz A rotada 90 grados:");
+console.table(resultadoA);
+
+console.log("Matriz B original:");
+console.table(matrizB);
+console.log("Matriz B rotada 90 grados:");
+console.table(resultadoB);

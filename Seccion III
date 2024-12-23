@@ -1,0 +1,48 @@
+const matrizA = [
+    [1, 2, 3],
+    [4, 5, 6]
+];
+
+const matrizB = [
+    [7, 8],
+    [9, 10],
+    [11, 12]
+];
+
+const multiplicarMatrices = (A, B) => {
+    const filasA = A.length;
+    const columnasA = A[0].length;
+    const filasB = B.length;
+    const columnasB = B[0].length;
+
+    // Validación de dimensiones
+    if (columnasA !== filasB) {
+        throw new Error("Las dimensiones no son compatibles para la multiplicación.");
+    }
+
+    const resultado = [];
+    
+    // Recorrer filas de A
+    for (let i = 0; i < filasA; i++) {
+        const filaResultado = [];
+        
+        // Recorrer columnas de B
+        for (let j = 0; j < columnasB; j++) {
+            let suma = 0;
+            
+            // Realizar el producto punto entre la fila de A y la columna de B
+            for (let k = 0; k < columnasA; k++) {
+                suma += A[i][k] * B[k][j];
+            }
+            
+            filaResultado.push(suma); // Añadir el resultado de la multiplicación
+        }
+        
+        resultado.push(filaResultado); // Añadir la fila resultante al resultado final
+    }
+    
+    return resultado;
+};
+
+// Mostrar el resultado
+console.log(multiplicarMatrices(matrizA, matrizB));
